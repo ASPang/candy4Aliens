@@ -1,0 +1,91 @@
+/* 
+ * Coder: Angela Pang
+ * 
+ * Assignment: CIS4500 Week 1 - Interlocking Block
+ * Date: 2015/01/14
+ * 
+ * Filename: styles.css
+ * 
+ * Description:
+ * Style sheet for the interlocking block web page. 
+ * 
+ */
+
+/*** General Tag Sytles ***/
+body {
+    width: 99%;
+    background-color: #f4fae0;
+}
+
+#content {
+    width: 800px;
+    height: auto;
+    
+    margin: auto;
+    display: block;
+}
+
+#infoDiv {
+    width: 50%;
+    height: auto;
+    
+    float: right;
+    text-align: left;
+    
+}
+
+
+#gameContent {
+    width: 50%;
+    height: auto;
+    
+    float: left;
+}
+
+canvas {
+    margin: auto;
+    display: block;
+    border: 1px solid #d3d3d3;
+}
+
+#blockCanvas {
+    border-top: 5px solid #d3d3d3;
+}
+
+.gameMenuDiv, #gameStartDiv {
+    margin: auto;
+    
+    width: 300px;    /*imgBlock x 6*/
+    height: auto;   /*imgBlock x 8*/
+}
+
+#gameStartDiv {
+    margin: 0 auto;
+    text-align: center;
+    padding: 10px 0 10px 0;
+}
+
+.imgBlock {
+    width: 50px;    
+    height: 50px;   
+}
+
+
+h1, h2, h3, h4, h5 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight:700;
+}
+
+
+/*** No Script ***/
+noscript h1 {
+    width: 100%;
+    font-size: 24px;
+    background-color: #f00;    
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;    
+    text-align: center
+}
+
+
+
