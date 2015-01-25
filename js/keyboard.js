@@ -30,6 +30,8 @@ function keyDownEvent(e) {
     var avl;    //Non-empty space
     var noBlock;    //Empty Space
     
+    e.preventDefault();
+    
     /*
     if (endGameFlag == true) {
         return false;
@@ -80,14 +82,13 @@ function keyDownEvent(e) {
 
 function rightArrowKeyEvent() {
     /*Move background image 5 pixels*/
-    backgroundImg.redraw(backgroundImg.xPos + 2, backgroundImg.yPos);
-    //backgroundImg2.redraw(backgroundImg2.xPos - 2, backgroundImg2.yPos);
+    backgroundImg.redraw(backgroundImg.xPos + 4, backgroundImg.yPos);
 }
 
 
 function leftArrowKeyEvent() {
     /*Move background image 5 pixels*/
-    backgroundImg.redraw(backgroundImg.xPos - 2, backgroundImg.yPos);
+    backgroundImg.redraw(backgroundImg.xPos - 4, backgroundImg.yPos);
     
 }
 

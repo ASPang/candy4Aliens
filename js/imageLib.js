@@ -18,7 +18,8 @@ var imageLib = function(canvasName, width, height, xPos, yPos) {
     this.oldPosY = yPos;
     
     this.image = "";
-    this.repeat = false;
+    this.repeatHor = false;
+    this.repeatVer = false;
     
 };
 
@@ -46,7 +47,8 @@ imageLib.prototype.canvasHeight = function() {
 
 imageLib.prototype.redraw = function(newPosX, newPosY) {
     /*Remove image*/
-    this.canvasCtx.clearRect(this.xPos, this.yPos, this.width, this.height);
+    //this.canvasCtx.clearRect(this.xPos, this.yPos, this.width, this.height);
+    this.canvasCtx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     
     console.log(this.oldPosX + " " + newPosX);
     /*Redraw new image*/
@@ -59,12 +61,39 @@ imageLib.prototype.redraw = function(newPosX, newPosY) {
     this.oldPosY = newPosY;
     
     /*Determine if the image needs to be repeated*/
-    if(this.repeat == false) {
-       console.log("REPEAT");
-    }
+    this.backgroundRepeat();
 }
 
 imageLib.prototype.backgroundRepeat = function() {
+    console.log(this.canvas.width);
+    var newPosX = this.xPos + this.width;
+    var newPosY = this.yPos + this.width;
+    var repeat = 0;
+    
+    if(this.repeatHor == true) {
+        /*Repeat image from current position to the right*/
+        while (newPosX < this.canvas.width) {
+            this.canvasCtx.drawImage(this.image, newPosX, this.yPos,  this.width, this.height);
+            newPosX = newPosX + this.width;
+            repeat++;
+        }
+        
+        /*Repeat image from current position to the left*/
+        var newPosX = this.xPos - this.width;
+        while (newPosX > (this.width * (-1))) {
+            this.canvasCtx.drawImage(this.image, newPosX, this.yPos,  this.width, this.height);
+            newPosX = newPosX - this.width;
+            repeat++;
+        }
+        
+        /*loop the image*/
+        if (this.xPos >= this.canvas.width) {
+            this.xPos = 0;
+        }
+        else if (this.xPos <= 0) {
+            this.xPos = this.canvas.width;
+        }
+    }
 }
         
 imageLib.prototype.intersect =  function() {

@@ -18,7 +18,7 @@ var ctxBlock;   //Block context
 
 var gameImage;
 var backgroundImg;  //background image
-var imgSrc = ["background1"];   /*Name of images*/
+var imgSrc = ["background1", "character"];   /*Name of images*/
 
 
 

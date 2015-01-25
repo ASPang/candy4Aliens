@@ -69,6 +69,8 @@ function setupCanvas() {
     backgroundImg = new imageLib(gameCanvas, blockSize, blockSize, 50, 50);
     
     /*Add background image to canvas*/
+    backgroundImg.repeatHor = true;
+    
     backgroundImg.addImg(gameImage.loadedImg["background1"]);
     
     
