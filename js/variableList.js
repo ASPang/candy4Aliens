@@ -16,6 +16,29 @@ var ctx;    //Canvas Context
 var cBlock;     //Block canvas
 var ctxBlock;   //Block context
 
+var gameImage;
+var backgroundImg;  //background image
+var imgSrc = ["background1"];   /*Name of images*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var gameBoard = []; //Array for the board game
 var blockList = [];  //Array for the blocks
 var blockImg = []; //Stores all the images

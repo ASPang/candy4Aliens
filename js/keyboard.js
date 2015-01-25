@@ -30,10 +30,11 @@ function keyDownEvent(e) {
     var avl;    //Non-empty space
     var noBlock;    //Empty Space
     
+    /*
     if (endGameFlag == true) {
         return false;
-    }
-    
+    }*/
+    //alert(e.keyCode);
     /*Determine which key is pressed*/
     switch (e.keyCode) {
         case 32:
@@ -44,6 +45,7 @@ function keyDownEvent(e) {
             // left key pressed
             lastKey = e.keyCode;
             
+            leftArrowKeyEvent();
             
             break;
         case 38:
@@ -54,6 +56,9 @@ function keyDownEvent(e) {
         case 39:
             // right key pressed
             lastKey = e.keyCode;
+            console.log("right key pressed");
+            
+            rightArrowKeyEvent();
             
             break;
         case 40:
@@ -71,6 +76,39 @@ function keyDownEvent(e) {
             break;
     }
 }
+
+
+function rightArrowKeyEvent() {
+    /*Move background image 5 pixels*/
+    backgroundImg.redraw(backgroundImg.xPos + 2, backgroundImg.yPos);
+    //backgroundImg2.redraw(backgroundImg2.xPos - 2, backgroundImg2.yPos);
+}
+
+
+function leftArrowKeyEvent() {
+    /*Move background image 5 pixels*/
+    backgroundImg.redraw(backgroundImg.xPos - 2, backgroundImg.yPos);
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*Determine if the user can move to an area on the canvas.
  * Return a variable:
