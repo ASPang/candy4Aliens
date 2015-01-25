@@ -15,6 +15,12 @@
 /*Initiate Keyboard listener even handler*/
 window.addEventListener("keydown", keyDownEvent, false);
 
+var keyboardClass = function () {
+    console.log('instance created');
+};
+
+var kbClass = new keyboardClass();
+
 /*Keyboard event handler*/
 function keyDownEvent(e) {
     var left = -1,
@@ -37,82 +43,23 @@ function keyDownEvent(e) {
         case 37:
             // left key pressed
             lastKey = e.keyCode;
-            removeTemp();
             
-            /*Determine if it's possible to move left*/
-            avl = checkNext(left, curPos);
-            if (avl != 0) {
-                makeMove(curPos + left);
-            }
-            
-            /*Determine if a new block can be placed on the above current position*/
-            if (chkLeftBorder() == false) {
-                if (gameBoard[curPos + left] == 0) {
-                    displayTemp(curPos + left);
-                }
-            }
             
             break;
         case 38:
             // up key pressed
             lastKey = e.keyCode;
             
-            /*Remove old temporary block position*/
-            removeTemp();
-            
-            avl = checkNext(up, curPos);
-            if (avl != 0) {
-                makeMove(curPos + up);
-            }
-            
-            /*Determine if a new block can be placed on the above current position*/
-            if (chkTopBorder() == false) {
-                if (gameBoard[curPos + up] == 0) {
-                    displayTemp(curPos + up);
-                }
-            }
-            
             break;
         case 39:
             // right key pressed
             lastKey = e.keyCode;
-            
-            /*Remove old temporary block position*/
-            removeTemp();
-            
-            /*Move up a square if possible*/
-            avl = checkNext(right, curPos);
-            if (avl != 0) {
-                makeMove(curPos + right);
-            }
-            
-            /*Determine if a new block can be placed on the right of the current position*/
-            if (chkRightBorder() == false) {
-                if (gameBoard[curPos + right] == 0) {
-                    displayTemp(curPos + right);
-                }                
-            }
             
             break;
         case 40:
             // down key pressed
             lastKey = e.keyCode;
             
-            /*Remove old temporary block position*/
-            removeTemp();
-            
-            /*Move up a square if possible*/
-            avl = checkNext(down, curPos);
-            if (avl != 0) {
-                makeMove(curPos + down);
-            }
-            
-            /*Determine if a new block can be placed on the bottom of the current position*/
-            if (chkBottomBorder() == false) {
-                if (gameBoard[curPos + down] == 0) {
-                    displayTemp(curPos + down);
-                }
-            }
             break;
         case 68:
             // D key pressed

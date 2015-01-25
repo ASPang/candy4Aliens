@@ -19,23 +19,74 @@
 
 /*Initialize the game*/
 function initGame() {
+    console.log("HERE");
     /*Preload images*/
-     preloadBlockImg();
+     preloadGameImages();
      
     /*Set up the board*/
-    setupVar();
+    //setupVar();
     
     /*Setup the board array*/
-    blockAry();
+    //blockAry();
     
     /*Display the board*/
-    setupBoard();   //Display currently placed blocks
+    //setupBoard();   //Display currently placed blocks
     
     /*Setup the list of blocks*/
-    getBlockList();
-    displayBlockList();
-    displayTemp(tempBlkPos);  //Display temporary block
+    //getBlockList();
+    //displayBlockList();
+    //displayTemp(tempBlkPos);  //Display temporary block
 }
+
+function preloadGameImages() {
+    var images = new preloadImages();
+    
+    images.imgPath;
+    console.log(images.imgPath);
+    
+    images.setImagePath("Hello setting new path");
+    console.log(images.imgPath);
+    
+    images.imgPath = "jldfasjdlf";
+    console.log(images.imgPath);
+    
+    var imgSrc = ["background1"];
+    
+    images.setImageAry(imgSrc[0]);
+    var newimg = new Image();
+    
+    newimg = images.loadedImg["background1"];
+    
+    console.log(newimg);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*Initialize the canvas*/
 function setupVar() {
@@ -43,8 +94,8 @@ function setupVar() {
     c = document.getElementById("gameCanvas");
     ctx = c.getContext("2d");
     
-    cBlock = document.getElementById("blockCanvas");
-    ctxBlock = cBlock.getContext("2d");
+    /*cBlock = document.getElementById("blockCanvas");
+    ctxBlock = cBlock.getContext("2d");*/
 }
  
  /*Create an empty array for the board*/
