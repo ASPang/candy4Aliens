@@ -19,7 +19,6 @@
 
 /*Initialize the game*/
 function initGame() {
-    console.log("HERE");
     /*Preload images*/
      preloadGameImages();
      
@@ -37,6 +36,10 @@ function initGame() {
     //getBlockList();
     //displayBlockList();
     //displayTemp(tempBlkPos);  //Display temporary block
+    
+    
+    /*Start the timer*/
+    startTimer();   //TESTING shouldn't be here have to be called from somewhere else
 }
 
 /*Initialize the canvas*/
@@ -55,12 +58,15 @@ function preloadGameImages() {
     gameImage = new preloadImages()
     
     /*Add image that needs to be preloaded*/
-    gameImage.setImageAry(imgSrc[0]);
+    for (i = 0; i < imgSrc.length; i++) {
+        gameImage.setImageAry(imgSrc[i]);
+    }
     
-    var newimg = new Image();
+    
+    /*var newimg = new Image();
     newimg = gameImage.loadedImg["background1"];
     
-    console.log(newimg);
+    console.log(newimg);*/
 }
 
 
@@ -68,18 +74,40 @@ function setupCanvas() {
     var gameCanvas = "gameCanvas";
     backgroundImg = new imageLib(gameCanvas, blockSize, blockSize, 50, 50);
     
-    /*Add background image to canvas*/
-    backgroundImg.repeatHor = true;
     
+    /*Add background image to canvas*/
+    backgroundImg.repeatHor = true; //Repeat the background
     backgroundImg.addImg(gameImage.loadedImg["background1"]);
     
-    
-    
-    var backgroundImg2 = new imageLib(gameCanvas, 50, 50, 70, 70);
-    
-    /*Add background image to canvas*/
-    backgroundImg2.addImg(gameImage.loadedImg["background1"]);
+    /*Draw the character on the screen*/
+    setupCharacter(gameCanvas);
 }
+
+function setupCharacter(gameCanvas) {
+    //character = new imageLib(gameCanvas, 50, 50, 275, 350);
+    character = new physics(gameCanvas, 50, 50, 275, 350);
+    character.addImg(gameImage.loadedImg["character"]);
+    //
+    //character.addImg("");
+    character.jump();
+    //character.canvasHeight();
+    /*Establishing character jump feature*/
+    character.jumpHeight = 200;
+    character.ground = character.canvas.height - character.height;
+    character.jumpSpeed = 2;
+    character.fallSpeed = 2;
+    
+    //console.log(character.jumpHeight);
+    
+    //character.getPrototypeOf(physics.jump());
+    //character.
+    //character.jump();
+    
+    
+}
+
+
+
 
 
 

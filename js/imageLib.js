@@ -1,14 +1,12 @@
 
 
 
-var imageLib = function(canvasName, width, height, xPos, yPos) {
-    console.log("image library initiated.");
-    var canvas;
-    var canvasCtx;
-    
+//var imageLib = function() {};
+imageLib.prototype.constructor = imageLib;
+
+function imageLib(canvasName, width, height, xPos, yPos) {    
     this.canvasName = canvasName;
     this.canvas = document.getElementById(this.canvasName);
-    console.log(canvas);
     this.canvasCtx = this.canvas.getContext("2d"); 
     this.width = width;
     this.height = height;
@@ -20,13 +18,18 @@ var imageLib = function(canvasName, width, height, xPos, yPos) {
     this.image = "";
     this.repeatHor = false;
     this.repeatVer = false;
-    
 };
+
+//imageLib.prototype = new physics();
+
 
 imageLib.prototype.addImg = function(image) {
     this.image = image; 
     this.canvasCtx.drawImage(image, this.xPos, this.yPos, this.width, this.height);
     //ctx.drawImage(image, this.xPos, this.yPos, this.width, this.height);
+    
+    /*Determine if the image needs to be repeated*/
+    this.backgroundRepeat();
 };
 
 /*Clear entire canvas*/
@@ -44,13 +47,16 @@ imageLib.prototype.canvasHeight = function() {
     return this.canvas.height;
 };
 
+imageLib.prototype.clearCanvas = function() {
+    this.canvasCtx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+};
 
 imageLib.prototype.redraw = function(newPosX, newPosY) {
     /*Remove image*/
     //this.canvasCtx.clearRect(this.xPos, this.yPos, this.width, this.height);
-    this.canvasCtx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    //this.canvasCtx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     
-    console.log(this.oldPosX + " " + newPosX);
+    //console.log(this.oldPosX + " " + newPosX);
     /*Redraw new image*/
     this.canvasCtx.drawImage(this.image, newPosX, newPosY,  this.width, this.height)
     
@@ -62,10 +68,10 @@ imageLib.prototype.redraw = function(newPosX, newPosY) {
     
     /*Determine if the image needs to be repeated*/
     this.backgroundRepeat();
-}
+};
 
 imageLib.prototype.backgroundRepeat = function() {
-    console.log(this.canvas.width);
+    //console.log(this.canvas.width);
     var newPosX = this.xPos + this.width;
     var newPosY = this.yPos + this.width;
     var repeat = 0;
@@ -98,7 +104,20 @@ imageLib.prototype.backgroundRepeat = function() {
         
 imageLib.prototype.intersect =  function() {
     
-}       
+};
+
+/*imageLib.prototype.jump =  function() {
+    
+};
+
+
+imageLib.prototype.gravity =  function() {
+    
+};
+
+imageLib.prototype.intersect =  function() {
+    
+};*/
         //function redrawPos(shade) {
 //    var xPos, yPos, row, col;
 //    

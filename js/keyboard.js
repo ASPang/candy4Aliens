@@ -15,11 +15,11 @@
 /*Initiate Keyboard listener even handler*/
 window.addEventListener("keydown", keyDownEvent, false);
 
-var keyboardClass = function () {
+/*var keyboardClass = function () {
     console.log('instance created');
 };
 
-var kbClass = new keyboardClass();
+var kbClass = new keyboardClass();*/
 
 /*Keyboard event handler*/
 function keyDownEvent(e) {
@@ -53,12 +53,12 @@ function keyDownEvent(e) {
         case 38:
             // up key pressed
             lastKey = e.keyCode;
-            
+            upArrowKeyEvent();
             break;
         case 39:
             // right key pressed
             lastKey = e.keyCode;
-            console.log("right key pressed");
+            //console.log("right key pressed");
             
             rightArrowKeyEvent();
             
@@ -79,6 +79,11 @@ function keyDownEvent(e) {
     }
 }
 
+function upArrowKeyEvent() {
+    /*Move background image 4 pixels*/
+    character.jumping = true;   
+    //character.jump();   //testing
+}
 
 function rightArrowKeyEvent() {
     /*Move background image 5 pixels*/

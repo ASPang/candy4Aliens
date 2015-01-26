@@ -17,8 +17,10 @@ var cBlock;     //Block canvas
 var ctxBlock;   //Block context
 
 var gameImage;
-var backgroundImg;  //background image
 var imgSrc = ["background1", "character"];   /*Name of images*/
+var backgroundImg;  //background image
+var character;  //character image
+
 
 
 

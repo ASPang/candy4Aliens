@@ -13,6 +13,77 @@
  */
 
 
+var preloadImages = function () {
+    //console.log("Preload image class initiated");
+
+    //var i, numBlocks = 11; //Number of block images
+    this.loadedImg = {}; //Stores all the images
+    this.imgPath = "img/";
+    this.numImgLoaded = 0;
+    this.fileExtension = ".png";
+    
+    //setImageAry();
+   /* function setImageAry(image) {
+        //var images = [11, 12, 13, 14, 16, 17, 20, 21, 22, 23, 24];
+        //var loadedImages = 0;
+
+
+        //for (var i in images) {
+        loadedImg[image] = new Image();
+        loadedImg[image].onload = function() {
+            //if(++numImgLoaded >= images.length) {
+            //  alert("ERROR loading image." + images.length);
+            //}
+        };
+
+        loadedImg[image].src = imageLoc(image);
+        numImgLoaded++;
+        //}
+    }
+    */
+    /*function setImagePath(newPath) {
+        imgPath = newPath;
+    }
+    
+    function setImagePath(type) {
+        this.fileExtension = type;
+    }
+    
+    function imageLoc(image) {
+        var imageLoc = imgPath + image + fileExtension;
+
+        return imageLoc;
+    }*/
+};
+
+preloadImages.prototype.setImagePath = function(newPath) {
+    this.imgPath = newPath;
+};
+
+preloadImages.prototype.imageLoc = function(image) {
+    var imageLoc = this.imgPath + image + this.fileExtension;
+    
+    return imageLoc;
+};
+
+
+preloadImages.prototype.setImageAry = function(image) {
+        this.loadedImg[image] = new Image();
+        this.loadedImg[image].onload = function() {};
+
+        this.loadedImg[image].src = this.imageLoc(image);
+        this.numImgLoaded++;
+};
+
+
+
+
+
+
+
+
+
+
 /*Generates a new block*/
 function genBlock(){
     var type;
@@ -162,68 +233,6 @@ function blockImg(block) {
     
     return image;
 }
-
-var preloadImages = function () {
-    console.log("Preload image class initiated");
-
-    //var i, numBlocks = 11; //Number of block images
-    this.loadedImg = {}; //Stores all the images
-    this.imgPath = "img/";
-    this.numImgLoaded = 0;
-    this.fileExtension = ".png";
-    
-    //setImageAry();
-   /* function setImageAry(image) {
-        //var images = [11, 12, 13, 14, 16, 17, 20, 21, 22, 23, 24];
-        //var loadedImages = 0;
-
-
-        //for (var i in images) {
-        loadedImg[image] = new Image();
-        loadedImg[image].onload = function() {
-            //if(++numImgLoaded >= images.length) {
-            //  alert("ERROR loading image." + images.length);
-            //}
-        };
-
-        loadedImg[image].src = imageLoc(image);
-        numImgLoaded++;
-        //}
-    }
-    */
-    /*function setImagePath(newPath) {
-        imgPath = newPath;
-    }
-    
-    function setImagePath(type) {
-        this.fileExtension = type;
-    }
-    
-    function imageLoc(image) {
-        var imageLoc = imgPath + image + fileExtension;
-
-        return imageLoc;
-    }*/
-};
-
-preloadImages.prototype.setImagePath = function(newPath) {
-    this.imgPath = newPath;
-};
-
-preloadImages.prototype.imageLoc = function(image) {
-    var imageLoc = this.imgPath + image + this.fileExtension;
-    
-    return imageLoc;
-};
-
-
-preloadImages.prototype.setImageAry = function(image) {
-        this.loadedImg[image] = new Image();
-        this.loadedImg[image].onload = function() {};
-
-        this.loadedImg[image].src = this.imageLoc(image);
-        this.numImgLoaded++;
-};
 
 
 //function initImageObj() {
