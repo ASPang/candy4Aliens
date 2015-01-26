@@ -81,26 +81,35 @@ function keyDownEvent(e) {
 }
 
 function upArrowKeyEvent() {
-    /*Move background image 4 pixels*/
-    character.jumping = true;   
+    /*Enable character to jump*/
+    if ((character.yPos + character.height) >= character.canvas.height) {
+        character.jumping = true; 
+    }
+
     //character.jump();   //testing
+    updateGame();
 }
 
 function rightArrowKeyEvent() {
     /*Move background image 5 pixels*/
-    backgroundImg.redraw(backgroundImg.xPos + 4, backgroundImg.yPos);
+    backgroundImg.redraw(backgroundImg.xPos - 4, backgroundImg.yPos);
     
     /*Update alien x Position*/
     moveAliens(4);
+    
+    updateGame();
 }
 
 
 function leftArrowKeyEvent() {
     /*Move background image 5 pixels*/
-    backgroundImg.redraw(backgroundImg.xPos - 4, backgroundImg.yPos);
+    backgroundImg.redraw(backgroundImg.xPos + 4, backgroundImg.yPos);
  
     /*Update alien x Position*/
-    moveAliens(-2);
+    moveAliens(-3);
+    
+    /**/
+    updateGame();
 }
 
 
