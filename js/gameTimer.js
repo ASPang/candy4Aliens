@@ -56,15 +56,38 @@ function moveAliens(speed) {
     var i;  //Loop counter
     //var speed = 2;
     
-    for (i = 0; i< aliens.length; i++) {
+    for (i = 0; i< aliens.length; i++) {            
+        aliens[i].canvasCtx.globalAlpha = alienVisibility;    
         aliens[i].redraw(aliens[i].xPos - speed, aliens[i].yPos);
         
         if ((aliens[i].xPos + aliens[i].width) < 0) {
             aliens[i].xPos =  aliens[i].canvas.width + aliens[i].width * 2;
         }
-        else if (aliens[i].xPos > aliens[i].canvas.width) {
-            //alien[i].xPos = 0 - alien[i].width * 2;
+        
+        /*Modify the alien's visibility*/
+        if (visible == true) {//&& alienVisibility > 0.0) {
+            console.log("HERE1");
+            alienVisibility -= 0.009;
         }
+        else if (visible == false) { // && alienVisibility < 1.0) {
+            alienVisibility += 0.009;
+            console.log("HERE3");
+        }
+        
+        if (alienVisibility >= 1.0) {
+            //alienVisibility = alienVisibility - 0.01;
+            //console.log("HRE1");
+            alienVisibility = 1.0;
+            visible = true;
+        }
+        else if (alienVisibility <= 0.0) {
+            /*console.log("HRE2");
+            alienVisibility *= 1;*/
+            console.log("HERE4");
+            alienVisibility = 0.0;
+            visible = false;
+        }
+        aliens[i].canvasCtx.globalAlpha = 1;  
     }
     
 }

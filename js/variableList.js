@@ -21,6 +21,9 @@ var imgSrc = ["background1", "character", "alien1"];   /*Name of images*/
 var backgroundImg;  //background image
 var character;  //character image
 var aliens = [];
+var alienVisibility = 1.0;
+var visible = true;
+
 
 
 
