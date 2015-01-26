@@ -18,15 +18,17 @@ function imageLib(canvasName, width, height, xPos, yPos) {
     this.image = "";
     this.repeatHor = false;
     this.repeatVer = false;
+    this.loopHor = false;
+    this.loopVer = false;
+    
+    this.spaceBuffer = 0;
+    
+    this.visible = true;
 };
-
-//imageLib.prototype = new physics();
-
 
 imageLib.prototype.addImg = function(image) {
     this.image = image; 
     this.canvasCtx.drawImage(image, this.xPos, this.yPos, this.width, this.height);
-    //ctx.drawImage(image, this.xPos, this.yPos, this.width, this.height);
     
     /*Determine if the image needs to be repeated*/
     this.backgroundRepeat();
@@ -102,8 +104,19 @@ imageLib.prototype.backgroundRepeat = function() {
     }
 }
         
-imageLib.prototype.intersect =  function() {
+imageLib.prototype.intersect =  function(image) {   //function(cx1, x1, x2, y1, y2) { 
+    var x1 = image.xPos;
+    var x2 = image.xPos + image.width;
+    var y1 = image.yPos;
+    var y2 = image.yPos + image.height;
+//    console.log(y1 + " "  + y2 + " " + (this.yPos + this.height) +  " " + this.yPos);
+//    console.log(x1 + " " + x2 + " " + (this.xPos + this.width) +  " " + this.xPos);
+
+    if ((x2 >= this.xPos) && (x1 <= (this.xPos + this.width)) && (y2 >= this.yPos) && (y1 <= (this.yPos + this.height))){
+        return true;
+    }
     
+    return false;
 };
 
 /*imageLib.prototype.jump =  function() {

@@ -14,6 +14,7 @@
 
 /*Initiate Keyboard listener even handler*/
 window.addEventListener("keydown", keyDownEvent, false);
+//window.addEventListener("keypress", keyPressEvent, false);
 
 /*var keyboardClass = function () {
     console.log('instance created');
@@ -88,13 +89,18 @@ function upArrowKeyEvent() {
 function rightArrowKeyEvent() {
     /*Move background image 5 pixels*/
     backgroundImg.redraw(backgroundImg.xPos + 4, backgroundImg.yPos);
+    
+    /*Update alien x Position*/
+    moveAliens(4);
 }
 
 
 function leftArrowKeyEvent() {
     /*Move background image 5 pixels*/
     backgroundImg.redraw(backgroundImg.xPos - 4, backgroundImg.yPos);
-    
+ 
+    /*Update alien x Position*/
+    moveAliens(-2);
 }
 
 

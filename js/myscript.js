@@ -81,32 +81,34 @@ function setupCanvas() {
     
     /*Draw the character on the screen*/
     setupCharacter(gameCanvas);
+    addAliens(gameCanvas);
 }
 
 function setupCharacter(gameCanvas) {
-    //character = new imageLib(gameCanvas, 50, 50, 275, 350);
+    /*Add the character to the canvas*/
     character = new physics(gameCanvas, 50, 50, 275, 350);
     character.addImg(gameImage.loadedImg["character"]);
-    //
-    //character.addImg("");
-    character.jump();
-    //character.canvasHeight();
-    /*Establishing character jump feature*/
+    
+    /*Establishing character jumping capabilities*/
     character.jumpHeight = 200;
     character.ground = character.canvas.height - character.height;
     character.jumpSpeed = 2;
     character.fallSpeed = 2;
-    
-    //console.log(character.jumpHeight);
-    
-    //character.getPrototypeOf(physics.jump());
-    //character.
-    //character.jump();
-    
-    
 }
 
-
+function addAliens(gameCanvas) {
+    //var gameCanvas = "gameCanvas";
+    var alienHeight = 50;
+    var alienWidth = 50;
+    
+    /*Add aliens to the canvas*/
+    aliens[0] = new physics(gameCanvas, alienWidth, alienHeight, 275, 200);
+    aliens[0].addImg(gameImage.loadedImg["alien1"]);
+    
+    
+    aliens[1] = new physics(gameCanvas, alienWidth, alienHeight, 300, 250);
+    aliens[1].addImg(gameImage.loadedImg["alien1"]);
+}
 
 
 

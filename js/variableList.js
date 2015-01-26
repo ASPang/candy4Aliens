@@ -17,10 +17,10 @@ var cBlock;     //Block canvas
 var ctxBlock;   //Block context
 
 var gameImage;
-var imgSrc = ["background1", "character"];   /*Name of images*/
+var imgSrc = ["background1", "character", "alien1"];   /*Name of images*/
 var backgroundImg;  //background image
 var character;  //character image
-
+var aliens = [];
 
 
 

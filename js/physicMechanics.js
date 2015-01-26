@@ -1,12 +1,6 @@
 
-
-//var physics = function() {};
-physics.prototype = Object.create(imageLib.prototype); //new imageLib();
+physics.prototype = Object.create(imageLib.prototype);
 physics.prototype.constructor = physics;
-//physics.prototype.parent =  imageLib.prototype;
-
-
-        
 
 function physics(canvasName, width, height, xPos, yPos) {
     imageLib.call(this, canvasName, width, height, xPos, yPos);
@@ -20,13 +14,6 @@ function physics(canvasName, width, height, xPos, yPos) {
     
     var jumping = false;    
 }
-//physics.prototype.addImg = function(image) {
-    //imageLib.addImg(image);
-    //this.$super.addImg.call(this,image);
-///};
-
-//physics.inhert(imageLib);
-
 
 physics.prototype.jump = function() {
     //console.log("in jump " + this.oldPosY);
@@ -34,8 +21,9 @@ physics.prototype.jump = function() {
     var i = 0;  //Loop counter
     
     if (this.jumping == true && (this.yPos > this.jumpHeight)) {
+        this.yPos -= this.jumpSpeed;
+        this.redraw(this.xPos, this.yPos);  // - this.jumpSpeed);
         
-        this.redraw(this.xPos, this.yPos - this.jumpSpeed);
     }
     else {
         this.jumping = false;

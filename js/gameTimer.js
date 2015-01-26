@@ -26,6 +26,7 @@ function startTimer() {
     
     /*Initiate game*/
     //init();
+    endGameFlag = false;
 }
 
 
@@ -37,6 +38,57 @@ function updateGame() {
     backgroundImg.redraw(backgroundImg.xPos, backgroundImg.yPos);
     character.jump();
     character.redraw(character.xPos, character.yPos);
+    //console.log(character.yPos);
+    
+    /*Update Alien position*/
+    moveAliens(2);
+    
+    
+    /*Check if the image intersects with anything on the canvas*/
+    checkIntersection();
+    
+    if (endGameFlag == true) {
+        clearInterval(gameTimer);
+    }
+}
+
+function moveAliens(speed) {
+    var i;  //Loop counter
+    //var speed = 2;
+    
+    for (i = 0; i< aliens.length; i++) {
+        aliens[i].redraw(aliens[i].xPos - speed, aliens[i].yPos);
+        
+        if ((aliens[i].xPos + aliens[i].width) < 0) {
+            aliens[i].xPos =  aliens[i].canvas.width + aliens[i].width * 2;
+        }
+        else if (aliens[i].xPos > aliens[i].canvas.width) {
+            //alien[i].xPos = 0 - alien[i].width * 2;
+        }
+    }
+    
+}
+
+
+function checkIntersection() {
+    var i, touch;  //loop counter
+    var x1, x2, y1, y2;
+    
+    /*Go through all the enemies to see if they intersect*/
+    for (i = 0; i< aliens.length; i++) {
+        x1 = aliens[i].xPos;
+        x2 = aliens[i].xPos + aliens[i].width;
+        
+        y1 = aliens[i].yPos;
+        y2 = aliens[i].yPos + aliens[i].height;
+        
+        touch = character.intersect(aliens[i]);
+        
+        if (touch == true) {
+//            /alert("GAMEOVER");
+            endGameFlag = true; //TESTING!!!!!!!
+        }
+    }
 }
 
 ///*Determine if the game should end*/
