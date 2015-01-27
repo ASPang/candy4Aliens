@@ -48,7 +48,7 @@ function preloadGameImages() {
 
 function setupCanvas() {
     var gameCanvas = "gameCanvas";
-    backgroundImg = new imageLib(gameCanvas, 57, 400, 50, 0);
+    backgroundImg = new imageLib(gameCanvas, 50, 400, 50, 0);
     
     
     /*Add background image to canvas*/
