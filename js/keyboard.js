@@ -59,7 +59,7 @@ function keyDownEvent(e) {
             break;
         case 40:
             // down key pressed
-            lastKey = e.keyCode;
+            //lastKey = e.keyCode;
             
             break;
         case 68:

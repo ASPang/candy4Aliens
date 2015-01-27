@@ -20,16 +20,15 @@ var milSec = 1000;
 
 
 function startTimer() {
-    if (endGameFlag == true) {
-      startClock = new Date().getTime();
-      var oneSec = 30;
-    
-      gameTimer = setInterval(function(){updateGame();}, oneSec);     
-    
-       /*Initiate game*/
-       initGame();
-       endGameFlag = false;
-    }
+   clearInterval(gameTimer);
+   startClock = new Date().getTime();
+   var oneSec = 30;
+ 
+   gameTimer = setInterval(function(){updateGame();}, oneSec);     
+ 
+    /*Initiate game*/
+    initGame();
+    endGameFlag = false;    
 }
 
 
@@ -53,10 +52,6 @@ function updateGame() {
     backgroundImg.canvasCtx.fillText("Survival Time: " + timeRemaining + " Seconds", 1, 14);
     
     /*Draw the character*/
-    if (lastKey == 40) {
-      // flip context horizontally
-      character.canvasCtx.scale(-1, 1);
-    }
     character.jump();
     character.redraw(character.xPos, character.yPos);
 
@@ -74,11 +69,18 @@ function updateGame() {
     /*Determine if the game over flag as been set*/
     if (endGameFlag == true) { //|| timeRemaining <= 0) {
         clearInterval(gameTimer);
-        
+                
         /*Show all aliens*/ 
         for (i = 0; i< aliens.length; i++) {                        
             aliens[i].redraw(aliens[i].xPos, aliens[i].yPos);
         }
+        
+        /*Inform the user that they lost*/
+        backgroundImg.canvasCtx.fillStyle = "red";
+        backgroundImg.canvasCtx.font = "bold 60px Arial";
+        backgroundImg.canvasCtx.fillText("GAME OVER", 125, 160);
+        backgroundImg.canvasCtx.font = "bold 30px Arial";
+        backgroundImg.canvasCtx.fillText("Survival Time: " + timeRemaining + " Seconds", 125, 220);
     }
 }
 
