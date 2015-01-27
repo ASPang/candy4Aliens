@@ -1,8 +1,9 @@
 /* 
  * Coder: Angela Pang
  * 
- * Assignment: CIS4500 Week 1 - Interlocking Block
+ * Assignment: CIS4500 Week 2 - Visibility (Candy 4 Aliens)
  * Date: 2015/01/14
+ * Modified: 2015/01/27
  * 
  * Filename: blockPieces.js
  * 

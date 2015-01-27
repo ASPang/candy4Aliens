@@ -1,4 +1,17 @@
-
+/* 
+ * Coder: Angela Pang
+ * 
+ * Assignment: CIS4500 Week 2 - Visibility (Candy 4 Aliens)
+ * Date: 2015/01/23
+ * 
+ * Filename: imageLib.js
+ * 
+ * Description:
+ * This files contains the class and function that manipulates 
+ * and draws on the HTML canvas.
+ * 
+ */
+ 
 imageLib.prototype.constructor = imageLib;
 
 function imageLib(canvasName, width, height, xPos, yPos) {    

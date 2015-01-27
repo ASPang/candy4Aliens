@@ -22,10 +22,6 @@
             <div class="gameMenuDiv">
                <!-- Game Title -->
                <h1>Candy 4 Aliens</h1>
-               
-               <!--div id="countDown">Time Remaining: 0 second</div>
-               <div id="countScore">Area Covered: 0</div>
-               <div id="rounds">Number of Rounds: 0</div-->
             </div>
 
             <!-- Canvas -->
@@ -34,47 +30,89 @@
             
             <!-- Start Button -->
             <div id="gameStartDiv">
-               <!--button id="startButton" onclick="startTimer(60);" onfocus="this.blur()">Start Game</button-->
+               <button id="startButton" onclick="startTimer();" onfocus="this.blur()">Start Game</button>
             </div>
             
          </div>
          
       </div>
       
+      <hr>
+      
       <!-- Game Instruction Section -->
-         <div id="infoDiv222">
-            <h4>Path Block Builder Instructions</h4>
+      <div id="infoDiv">
+         <h4>Candy 4 Aliens Instructions</h4>
 
-            <!-- How To -->
-            <h5>How To Start:</h5>
-            <p>To start the game click the "Start Game" button below the game window.</p>
+         <!-- How To -->
+         <h5>How To Start:</h5>
+         <p>To start the game click the "Start Game" button below the game window.</p>
+         
+         <!-- Controls -->
+         <h5>Controls</h5>
+          Use the keyboard arrow keys to move around the game window
+         <ul>
+            <li>
+               Right Arrow Key - Move your character right;
+            </li>
+            <li>
+               Left Arrow Key - Move your character Left;
+            </li>
+            <li>
+               Up Arrow Key - Use the up arrow key to jump. 
+            </li>
             
-            <!-- Controls -->
-            <h5>Controls</h5>
-            <ul>
-               <li>
-                  Arrow Keys - Use the keyboard arrow keys to move around the game
-                  window and determine where to put the block. 
-               </li>
-               <li>
-                  Space Bar - Use the space bar to place a block on the canvas. 
-               </li>
-            </ul>
-           
-            <!-- Game play -->
-            <h5>Game Play</h5>
-            <p>
-               The goal of the game is to cover at least 40% of the canvas (20/48 squares)
-               within the given time limit. If successful you will gain access to the next 
-               round. Each round will give you a shorter time limit to cover 40% of the space.
-            </p>
-            <p>
-               The possible blocks that can be played in order are randomly generated 
-               and can found lined up horizontally below the game window. As each block
-               is gets played the line will shift right with new block 
-               generated at the end of the line.
-            </p>
+         </ul>
+        
+         <!-- Game play -->
+         <h5>Game Play</h5>
+         <p>
+            Don't get abducted by aliens, that is the goal of the game. Try to survive
+            through invasion as long as possible. Death is unavoidable but the candy seems to
+            kill off the aliens and prolong your survival.
+         </p>
+         <p>
+            
+         </p>
+         
+         <!-- Characters and Items -->
+         <h5>Characters</h5>
+         <div id="characterDiv">
+         
+         
+            <table style="width:100%">
+              <tr>
+                <td>
+                  <img src="img/character.png" height="100" width="auto" />
+                </td>
+                <td>
+                  <img src="img/alien1.png" />
+                </td>
+                <td>
+                  <img src="img/candy.png" />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <b>Player</b>
+                  <br>
+                  A child who is trying to survive an alien invasion. 
+                  His only defence is his card board box and his kitchen helmet.
+                </td>
+                <td>
+                  <b>Alien</b>
+                  <br>
+                  Avoid them at all cost when you DON'T have "Power Up" activated from eatting candy.
+                  
+                </td>
+                <td>
+                  <b>Candy</b>
+                  <br>
+                  Mysteriously laying around the street and aliens die when you consume them.
+                </td>
+              </tr>
+            </table> 
          </div>
+      </div>
 
       <!-- JavaScript -->
       <script type="text/javascript" src="js/variableList.js"></script>

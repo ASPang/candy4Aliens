@@ -1,3 +1,17 @@
+/* 
+ * Coder: Angela Pang
+ * 
+ * Assignment: CIS4500 Week 2 - Visibility (Candy 4 Aliens)
+ * Date: 2015/01/23
+ * 
+ * Filename: intersection.js
+ * 
+ * Description:
+ * This files contains the function that determine if any objects in 
+ * the game touches.
+ * 
+ */
+ 
 function checkIntersection() {
     var i, touch;  //loop counter
     
