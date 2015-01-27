@@ -82,22 +82,27 @@ function setupCanvas() {
     /*Draw the character on the screen*/
     setupCharacter(gameCanvas);
     addAliens(gameCanvas);
+    addCandy(gameCanvas);
 }
 
 function setupCharacter(gameCanvas) {
+    /*Size of character*/
+    var height = 50;
+    var width = 50;
+    
     /*Add the character to the canvas*/
-    character = new physics(gameCanvas, 50, 50, 275, 350);
+    character = new physics(gameCanvas, width, height, 275, 350);
     character.addImg(gameImage.loadedImg["character"]);
     
     /*Establishing character jumping capabilities*/
-    character.jumpHeight = 200;
+    character.jumpHeight = 100;
     character.ground = character.canvas.height - character.height;
     character.jumpSpeed = 2;
     character.fallSpeed = 2;
 }
 
 function addAliens(gameCanvas) {
-    //var gameCanvas = "gameCanvas";
+    /*Size of aliens*/
     var alienHeight = 50;
     var alienWidth = 50;
     
@@ -110,29 +115,19 @@ function addAliens(gameCanvas) {
     aliens[1].addImg(gameImage.loadedImg["alien1"]);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-function testPreload() {
-    gameImage.imgPath;
-    console.log(gameImage.imgPath);
+function addCandy(gameCanvas) {
+    /*Size of candy*/
+    var width = 50;
+    var height = 50;
     
-    gameImage.setImagePath("Hello setting new path");
-    console.log(gameImage.imgPath);
-    
-    gameImage.imgPath = "jldfasjdlf";
-    console.log(gameImage.imgPath);
+    /*Add aliens to the canvas*/
+    candy = new physics(gameCanvas, width, height, 310, 350);
+    candy.addImg(gameImage.loadedImg["candy"]);
 }
+
+
+
+
 
 
 

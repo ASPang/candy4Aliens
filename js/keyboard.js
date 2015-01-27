@@ -16,12 +16,6 @@
 window.addEventListener("keydown", keyDownEvent, false);
 //window.addEventListener("keypress", keyPressEvent, false);
 
-/*var keyboardClass = function () {
-    console.log('instance created');
-};
-
-var kbClass = new keyboardClass();*/
-
 /*Keyboard event handler*/
 function keyDownEvent(e) {
     var left = -1,
@@ -33,11 +27,6 @@ function keyDownEvent(e) {
     
     e.preventDefault();
     
-    /*
-    if (endGameFlag == true) {
-        return false;
-    }*/
-    //alert(e.keyCode);
     /*Determine which key is pressed*/
     switch (e.keyCode) {
         case 32:
@@ -86,29 +75,36 @@ function upArrowKeyEvent() {
         character.jumping = true; 
     }
 
-    //character.jump();   //testing
+    /*Update the game window*/
     updateGame();
 }
 
 function rightArrowKeyEvent() {
+    var move = 4;
+    
     /*Move background image 5 pixels*/
-    backgroundImg.redraw(backgroundImg.xPos - 4, backgroundImg.yPos);
+    backgroundImg.redraw(backgroundImg.xPos - move, backgroundImg.yPos);
+    candy.redraw(candy.xPos - move, candy.yPos);
     
     /*Update alien x Position*/
     moveAliens(4);
     
+    /*Update the game window*/
     updateGame();
 }
 
 
 function leftArrowKeyEvent() {
+    var move = 4;
+    
     /*Move background image 5 pixels*/
-    backgroundImg.redraw(backgroundImg.xPos + 4, backgroundImg.yPos);
- 
+    backgroundImg.redraw(backgroundImg.xPos + move, backgroundImg.yPos);
+    candy.redraw(candy.xPos + move, candy.yPos);
+     
     /*Update alien x Position*/
     moveAliens(-3);
     
-    /**/
+    /*Update the game window*/
     updateGame();
 }
 

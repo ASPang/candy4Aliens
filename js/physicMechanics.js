@@ -16,8 +16,6 @@ function physics(canvasName, width, height, xPos, yPos) {
 }
 
 physics.prototype.jump = function() {
-    //console.log("in jump " + this.oldPosY);
-//    /var character = this.character;
     var i = 0;  //Loop counter
     
     if (this.jumping == true && (this.yPos > this.jumpHeight)) {
@@ -31,11 +29,7 @@ physics.prototype.jump = function() {
     }
 };
 
-physics.prototype.gravity = function() {
-    //var character;
-    //console.log("in gravity" +  this.yPos + " " + this.canvas.height + " " + this.height + " " + this.jumpHeight);
-    //console.log("----" +  yPos + " " + this.canvas.height + " " + this.height);
-    
+physics.prototype.gravity = function() {    
     if (this.yPos < (this.canvas.height - this.height) && (this.yPos <= this.ground)) {
         this.redraw(this.xPos, this.yPos + this.jumpSpeed);
     }

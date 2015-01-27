@@ -17,12 +17,17 @@ var cBlock;     //Block canvas
 var ctxBlock;   //Block context
 
 var gameImage;
-var imgSrc = ["background1", "character", "alien1"];   /*Name of images*/
+var imgSrc = ["background1", "character", "alien1", "candy"];   /*Name of images*/
 var backgroundImg;  //background image
 var character;  //character image
+var candy;  //candy image
 var aliens = [];
 var alienVisibility = 1.0;
 var visible = true;
+
+var points = 0;
+var powerUp = 0;
+var powerUpEnd = 10;
 
 
 

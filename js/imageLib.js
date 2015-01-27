@@ -1,7 +1,4 @@
 
-
-
-//var imageLib = function() {};
 imageLib.prototype.constructor = imageLib;
 
 function imageLib(canvasName, width, height, xPos, yPos) {    
@@ -54,11 +51,6 @@ imageLib.prototype.clearCanvas = function() {
 };
 
 imageLib.prototype.redraw = function(newPosX, newPosY) {
-    /*Remove image*/
-    //this.canvasCtx.clearRect(this.xPos, this.yPos, this.width, this.height);
-    //this.canvasCtx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    
-    //console.log(this.oldPosX + " " + newPosX);
     /*Redraw new image*/
     this.canvasCtx.drawImage(this.image, newPosX, newPosY,  this.width, this.height)
     
@@ -109,8 +101,6 @@ imageLib.prototype.intersect =  function(image) {   //function(cx1, x1, x2, y1, 
     var x2 = image.xPos + image.width;
     var y1 = image.yPos;
     var y2 = image.yPos + image.height;
-//    console.log(y1 + " "  + y2 + " " + (this.yPos + this.height) +  " " + this.yPos);
-//    console.log(x1 + " " + x2 + " " + (this.xPos + this.width) +  " " + this.xPos);
 
     if ((x2 >= this.xPos) && (x1 <= (this.xPos + this.width)) && (y2 >= this.yPos) && (y1 <= (this.yPos + this.height))){
         return true;
@@ -118,34 +108,3 @@ imageLib.prototype.intersect =  function(image) {   //function(cx1, x1, x2, y1, 
     
     return false;
 };
-
-/*imageLib.prototype.jump =  function() {
-    
-};
-
-
-imageLib.prototype.gravity =  function() {
-    
-};
-
-imageLib.prototype.intersect =  function() {
-    
-};*/
-        //function redrawPos(shade) {
-//    var xPos, yPos, row, col;
-//    
-//    /*Get the block row and column number*/
-//    row = getRow(curPos);
-//    col = getCol(row, curPos);
-//    
-//    /*Get the block coordinate*/
-//    xPos = getXPos(row);
-//    yPos = getYPos(col);
-//    
-//    /*Remove image*/
-//    ctx.clearRect(yPos, xPos, blockSize, blockSize);
-//    
-//    /*Added faded image*/
-//    ctx.globalAlpha=shade;    
-//    ctx.drawImage(blockImg[gameBoard[curPos]], yPos, xPos, blockSize, blockSize);
-//}

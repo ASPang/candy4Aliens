@@ -15,6 +15,7 @@ var gameTimer;
 var startClock;
 var endGameFlag = true; //Game isn't running is true
 var numGamePlay = 0;
+var milSec = 1000;
 
 
 function startTimer() {
@@ -31,88 +32,108 @@ function startTimer() {
 
 
 function updateGame() {
+    var i;  //Loop counter
+    var countDownTime = 60;
+    
     /*Calculate time lapse*/
-    //var timeRemaining = Math.round(countDownTime - (new Date().getTime() - startClock) / milSec);
-    //gameTimer = setInterval(function(){gameOver(countDownTime);}, oneSec);    
+    var timeRemaining = Math.round(countDownTime - (new Date().getTime() - startClock) / milSec);
+
+    /*Clear the canvas*/
     backgroundImg.clearCanvas();
+    
+    /*Draw the background*/
     backgroundImg.redraw(backgroundImg.xPos, backgroundImg.yPos);
+    
+    /*Draw gameplay information*/
+    backgroundImg.canvasCtx.fillStyle = "blue";
+    backgroundImg.canvasCtx.font = "bold 30px Arial";
+    backgroundImg.canvasCtx.fillText("Time of Death: " + timeRemaining + " Seconds", 1, 30);
+    
+    /*Draw the character*/
     character.jump();
     character.redraw(character.xPos, character.yPos);
-    //console.log(character.yPos);
+
+    /*Draw the candy*/
+    candyTime();
+    candy.redraw(candy.xPos, candy.yPos);
     
     /*Update Alien position*/
     moveAliens(2);
-    
-    
+        
     /*Check if the image intersects with anything on the canvas*/
     checkIntersection();
+    foundCandy();
     
-    if (endGameFlag == true) {
+    /*Determine if the game over flag as been set*/
+    if (endGameFlag == true || timeRemaining <= 0) {
         clearInterval(gameTimer);
+        
+        /*Show all aliens*/ 
+        for (i = 0; i< aliens.length; i++) {                        
+            aliens[i].redraw(aliens[i].xPos, aliens[i].yPos);
+        }
     }
 }
 
 function moveAliens(speed) {
     var i;  //Loop counter
-    //var speed = 2;
     
+    /*Modify every alien image*/
     for (i = 0; i< aliens.length; i++) {            
         aliens[i].canvasCtx.globalAlpha = alienVisibility;    
         aliens[i].redraw(aliens[i].xPos - speed, aliens[i].yPos);
         
+        /*Determine if the alien is off screen*/
         if ((aliens[i].xPos + aliens[i].width) < 0) {
-            aliens[i].xPos =  aliens[i].canvas.width + aliens[i].width * 2;
-        }
+            newAlien(aliens[i]);
+        }        
         
         /*Modify the alien's visibility*/
-        if (visible == true) {//&& alienVisibility > 0.0) {
-            console.log("HERE1");
+        if (visible == true) {
             alienVisibility -= 0.009;
         }
-        else if (visible == false) { // && alienVisibility < 1.0) {
+        else if (visible == false) { 
             alienVisibility += 0.009;
-            console.log("HERE3");
         }
         
         if (alienVisibility >= 1.0) {
-            //alienVisibility = alienVisibility - 0.01;
-            //console.log("HRE1");
             alienVisibility = 1.0;
             visible = true;
         }
         else if (alienVisibility <= 0.0) {
-            /*console.log("HRE2");
-            alienVisibility *= 1;*/
-            console.log("HERE4");
             alienVisibility = 0.0;
             visible = false;
         }
         aliens[i].canvasCtx.globalAlpha = 1;  
     }
-    
 }
 
-
-function checkIntersection() {
-    var i, touch;  //loop counter
-    var x1, x2, y1, y2;
+function addTime() {
+    var countDownTime = 60;
+    var sec30 = 30 * milSec; 
     
-    /*Go through all the enemies to see if they intersect*/
-    for (i = 0; i< aliens.length; i++) {
-        x1 = aliens[i].xPos;
-        x2 = aliens[i].xPos + aliens[i].width;
-        
-        y1 = aliens[i].yPos;
-        y2 = aliens[i].yPos + aliens[i].height;
-        
-        touch = character.intersect(aliens[i]);
-        
-        if (touch == true) {
-//            /alert("GAMEOVER");
-            endGameFlag = true; //TESTING!!!!!!!
-        }
+    /*Add 30 seconds of game play*/
+    startClock += sec30;
+    
+    /*Calculate time lapse*/
+    var timeRemaining = Math.round(countDownTime - (new Date().getTime() - startClock) / milSec);
+    
+    if (timeRemaining > 60) {
+        startClock = new Date().getTime(); 
     }
 }
+
+function candyTime() {
+    var powerRemaining = Math.round(powerUpEnd - (new Date().getTime() - powerUp) / milSec);
+    
+    if (powerRemaining > 0) {
+        backgroundImg.canvasCtx.fillText("Power Up " + powerRemaining, 200, 100);
+    }
+    
+    return powerRemaining;
+}
+
+
 
 ///*Determine if the game should end*/
 //function gameOver(countDownTime) {
