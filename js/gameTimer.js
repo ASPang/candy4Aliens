@@ -36,7 +36,8 @@ function updateGame() {
     var countDownTime = 60;
     
     /*Calculate time lapse*/
-    var timeRemaining = Math.round(countDownTime - (new Date().getTime() - startClock) / milSec);
+    //var timeRemaining = Math.round(countDownTime - (new Date().getTime() - startClock) / milSec);
+    var timeRemaining = Math.round((new Date().getTime() - startClock) / milSec);
 
     /*Clear the canvas*/
     backgroundImg.clearCanvas();
@@ -45,11 +46,15 @@ function updateGame() {
     backgroundImg.redraw(backgroundImg.xPos, backgroundImg.yPos);
     
     /*Draw gameplay information*/
-    backgroundImg.canvasCtx.fillStyle = "blue";
-    backgroundImg.canvasCtx.font = "bold 30px Arial";
-    backgroundImg.canvasCtx.fillText("Time of Death: " + timeRemaining + " Seconds", 1, 30);
+    backgroundImg.canvasCtx.fillStyle = "yellow";
+    backgroundImg.canvasCtx.font = "bold 14px Arial";
+    backgroundImg.canvasCtx.fillText("Survival Time: " + timeRemaining + " Seconds", 1, 14);
     
     /*Draw the character*/
+    if (lastKey == 40) {
+      // flip context horizontally
+      character.canvasCtx.scale(-1, 1);
+    }
     character.jump();
     character.redraw(character.xPos, character.yPos);
 
@@ -65,7 +70,7 @@ function updateGame() {
     foundCandy();
     
     /*Determine if the game over flag as been set*/
-    if (endGameFlag == true || timeRemaining <= 0) {
+    if (endGameFlag == true) { //|| timeRemaining <= 0) {
         clearInterval(gameTimer);
         
         /*Show all aliens*/ 
@@ -90,10 +95,10 @@ function moveAliens(speed) {
         
         /*Modify the alien's visibility*/
         if (visible == true) {
-            alienVisibility -= 0.009;
+            alienVisibility -= 0.001;
         }
         else if (visible == false) { 
-            alienVisibility += 0.009;
+            alienVisibility += 0.001;
         }
         
         if (alienVisibility >= 1.0) {
@@ -127,7 +132,8 @@ function candyTime() {
     var powerRemaining = Math.round(powerUpEnd - (new Date().getTime() - powerUp) / milSec);
     
     if (powerRemaining > 0) {
-        backgroundImg.canvasCtx.fillText("Power Up " + powerRemaining, 200, 100);
+        backgroundImg.canvasCtx.font = "bold 30px Arial";
+        backgroundImg.canvasCtx.fillText("Power Up Activated", 150, 110);
     }
     
     return powerRemaining;

@@ -47,9 +47,6 @@ function setupCanvas() {
      /*Setting up the canvas*/
     c = document.getElementById("gameCanvas");
     ctx = c.getContext("2d");
-    
-    /*cBlock = document.getElementById("blockCanvas");
-    ctxBlock = cBlock.getContext("2d");*/
 }
 
 
@@ -72,7 +69,7 @@ function preloadGameImages() {
 
 function setupCanvas() {
     var gameCanvas = "gameCanvas";
-    backgroundImg = new imageLib(gameCanvas, blockSize, blockSize, 50, 350);
+    backgroundImg = new imageLib(gameCanvas, 57, 400, 1, 0);
     
     
     /*Add background image to canvas*/
@@ -87,11 +84,11 @@ function setupCanvas() {
 
 function setupCharacter(gameCanvas) {
     /*Size of character*/
-    var height = 50;
-    var width = 50;
+    var height = 115;
+    var width = 77;
     
     /*Add the character to the canvas*/
-    character = new physics(gameCanvas, width, height, 275, 350);
+    character = new physics(gameCanvas, width, height, 275, 285);
     character.addImg(gameImage.loadedImg["character"]);
     
     /*Establishing character jumping capabilities*/
@@ -111,8 +108,14 @@ function addAliens(gameCanvas) {
     aliens[0].addImg(gameImage.loadedImg["alien1"]);
     
     
-    aliens[1] = new physics(gameCanvas, alienWidth, alienHeight, 300, 250);
+    aliens[1] = new physics(gameCanvas, alienWidth, alienHeight, 550, 200);
     aliens[1].addImg(gameImage.loadedImg["alien1"]);
+    
+    aliens[2] = new physics(gameCanvas, alienWidth, alienHeight, 50, 100);
+    aliens[2].addImg(gameImage.loadedImg["alien1"]);
+    
+    aliens[3] = new physics(gameCanvas, alienWidth, alienHeight, 100, 150);
+    aliens[3].addImg(gameImage.loadedImg["alien1"]);
 }
 
 function addCandy(gameCanvas) {
@@ -121,7 +124,7 @@ function addCandy(gameCanvas) {
     var height = 50;
     
     /*Add aliens to the canvas*/
-    candy = new physics(gameCanvas, width, height, 310, 350);
+    candy = new physics(gameCanvas, width, height, 400, 350);
     candy.addImg(gameImage.loadedImg["candy"]);
 }
 

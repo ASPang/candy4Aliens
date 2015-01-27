@@ -27,6 +27,11 @@ function keyDownEvent(e) {
     
     e.preventDefault();
     
+    /*Determine if the game over flag as been set*/
+    if (endGameFlag == true) { 
+      return false;
+    }
+    
     /*Determine which key is pressed*/
     switch (e.keyCode) {
         case 32:

@@ -25,7 +25,7 @@ function foundCandy() {
         powerUp = new Date().getTime();
         
         /*Add playtime*/
-        addTime();
+        //addTime();
     }
     else if (candy.xPos < -50) {
         /*Generate new candy in the game world*/
@@ -41,7 +41,7 @@ function newAlien(alien) {
 
 /*Regenerate Candy*/
 function genNewCandy() {
-    candy.xPos = candy.canvas.width + genNumRange(100, 500); 
+    candy.xPos = candy.canvas.width + genNumRange(200, 800); 
     candy.yPos = genNumRange(character.jumpHeight, candy.canvas.height-candy.height); 
 }
 
